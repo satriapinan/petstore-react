@@ -1,0 +1,90 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: auto;
+  border-radius: var(--border-radius);
+  border: 1.5px solid transparent;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn--full {
+  width: 100%;
+}
+
+.btn--color-primary {
+  --c-base: var(--color-primary);
+  --c-hover: var(--color-primary-hover);
+  --c-chip: var(--color-primary-chip);
+}
+
+.btn--color-danger {
+  --c-base: var(--color-error);
+  --c-hover: var(--color-error-hover);
+  --c-chip: var(--color-error-chip);
+}
+
+.btn--color-warning {
+  --c-base: var(--color-warning);
+  --c-hover: var(--color-warning-hover);
+  --c-chip: var(--color-warning-chip);
+}
+
+.btn--color-success {
+  --c-base: var(--color-success);
+  --c-hover: var(--color-success-hover);
+  --c-chip: var(--color-success-chip);
+}
+
+.btn--contained {
+  background-color: var(--c-base);
+  color: var(--color-text-inverted);
+}
+
+.btn--contained:hover:not(:disabled) {
+  background-color: var(--c-hover);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.btn--outline:hover:not(:disabled) {
+  background-color: var(--color-background);
+}
+
+.btn--outline.btn--color-danger,
+.btn--outline.btn--color-warning,
+.btn--outline.btn--color-success {
+  color: var(--c-base);
+  border-color: var(--c-base);
+}
+
+.btn--outline.btn--color-danger:hover:not(:disabled),
+.btn--outline.btn--color-warning:hover:not(:disabled),
+.btn--outline.btn--color-success:hover:not(:disabled) {
+  background-color: var(--c-chip);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn__icon {
+  display: flex;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}

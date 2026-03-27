@@ -1,0 +1,31 @@
+.textfield {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+  color: var(--color-text-secondary);
+}
+
+.input {
+  padding: 12px 14px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  font-size: 14px;
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+  color: var(--color-text-primary);
+  font-family: inherit;
+  background: transparent;
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+}

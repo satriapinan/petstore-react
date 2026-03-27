@@ -1,0 +1,87 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--color-text-inverted);
+  border-radius: 12px;
+  padding: 24px;
+  width: calc(100vw - 32px);
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: scale-in 0.2s ease-out;
+  box-sizing: border-box;
+  color: inherit;
+}
+
+.modal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+
+.modal-icon.primary {
+  background-color: var(--color-primary-chip);
+  color: var(--color-primary);
+}
+
+.modal-icon.danger {
+  background-color: var(--color-error-chip);
+  color: var(--color-error);
+}
+
+.modal-icon.warning {
+  background-color: var(--color-warning-chip);
+  color: var(--color-warning);
+}
+
+.modal-icon.success {
+  background-color: var(--color-success-chip);
+  color: var(--color-success);
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 8px 0;
+}
+
+.modal-message {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
