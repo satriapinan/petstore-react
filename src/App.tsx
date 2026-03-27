@@ -1,21 +1,21 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ReactQueryProvider from '@/core/providers/react-query.provider';
+import AppSnackbarProvider from '@/core/providers/snackbar.provider';
+import LoadingPage from '@/features/loading/loading.page';
+import Navbar from '@/shared/components/navbar/navbar.component';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 1,
-      staleTime: 1000 * 60 * 5,
-    },
-  },
-});
 
 export default function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <main>
-        <Outlet />
-      </main>
-    </QueryClientProvider>
+    <ReactQueryProvider>
+      <AppSnackbarProvider>
+        <Suspense fallback={<LoadingPage />}>
+          <Navbar />
+          <main>
+            <Outlet />
+          </main>
+        </Suspense>
+      </AppSnackbarProvider>
+    </ReactQueryProvider>
   );
 }
