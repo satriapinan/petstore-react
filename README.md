@@ -162,4 +162,6 @@ Sebagian besar konsep sama, hanya berbeda cara implementasi
 
 ---
 
-Dokumen ini merupakan bagian dari proses migrasi aplikasi dari Angular ke React menggunakan API dari https://petstore.swagger.io/
+_Dokumen ini merupakan bagian dari proses migrasi aplikasi dari Angular ke React menggunakan API dari https://petstore.swagger.io/_
+
+_Link Demo: https://youtu.be/sQI8DWzpUD4_
