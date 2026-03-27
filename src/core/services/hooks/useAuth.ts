@@ -2,7 +2,7 @@ import { getUserApi, loginApi, registerApi } from '@core/services/api/auth.api';
 import type { User } from '@shared/models/user.model';
 import { useMutation } from '@tanstack/react-query';
 import { useSnackbar } from 'notistack';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const getStoredUser = (): User | null => {
@@ -21,6 +21,15 @@ export const useAuth = () => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const [user, setUser] = useState<User | null>(getStoredUser);
+
+  useEffect(() => {
+    const handleAuthChange = () => {
+      setUser(getStoredUser());
+    };
+
+    globalThis.addEventListener('auth-change', handleAuthChange);
+    return () => globalThis.removeEventListener('auth-change', handleAuthChange);
+  }, []);
 
   const loginMutation = useMutation({
     mutationFn: async ({ username, password }: { username: string; password: string }) => {
@@ -55,6 +64,8 @@ export const useAuth = () => {
     const user = await loginMutation.mutateAsync(payload);
     setUser(user);
 
+    globalThis.dispatchEvent(new Event('auth-change'));
+
     navigate(user.username === 'admin' ? '/dashboard' : '/pets');
 
     return user;
@@ -70,6 +81,8 @@ export const useAuth = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setUser(null);
+
+    globalThis.dispatchEvent(new Event('auth-change'));
 
     enqueueSnackbar('Logout successful', { variant: 'success' });
     navigate('/login');
